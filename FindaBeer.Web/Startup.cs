@@ -70,6 +70,13 @@ namespace FindaBeer.Web
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "FindaBeer API");
                 c.RoutePrefix = "api/help";
             });
+
+            app.UseRouting();
+
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllers();
+            });
         }
     }
 }
