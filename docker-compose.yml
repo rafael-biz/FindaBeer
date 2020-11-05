@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  findabeer.web:
+    image: ${DOCKER_REGISTRY-}findabeerweb
+    build:
+      context: .
+      dockerfile: FindaBeer.Web/Dockerfile

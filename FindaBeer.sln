@@ -5,6 +5,8 @@ VisualStudioVersion = 16.0.29806.167
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FindaBeer.Web", "FindaBeer.Web\FindaBeer.Web.csproj", "{7225C8A1-023B-4928-BAFA-D794CDABC08F}"
 EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{D27ECC75-184F-4D25-AA98-F09740107E82}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{7225C8A1-023B-4928-BAFA-D794CDABC08F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7225C8A1-023B-4928-BAFA-D794CDABC08F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7225C8A1-023B-4928-BAFA-D794CDABC08F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D27ECC75-184F-4D25-AA98-F09740107E82}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D27ECC75-184F-4D25-AA98-F09740107E82}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D27ECC75-184F-4D25-AA98-F09740107E82}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D27ECC75-184F-4D25-AA98-F09740107E82}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
