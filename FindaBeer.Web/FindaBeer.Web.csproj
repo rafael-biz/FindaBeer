@@ -17,6 +17,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\FindaBeer.Services\FindaBeer.Services.csproj" />
+    <ProjectReference Include="..\FindaBeer.Services\FindaBeer.Services.csproj" />
   </ItemGroup>
 </Project>
