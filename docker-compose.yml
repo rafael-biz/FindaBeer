@@ -1,8 +1,20 @@
 version: '3.4'
 
 services:
-  findabeer.web:
-    image: ${DOCKER_REGISTRY-}findabeerweb
-    build:
-      context: .
-      dockerfile: FindaBeer.Web/Dockerfile
+    mongo:
+        container_name: mongo
+        image: mongo
+        restart: always
+        volumes:
+            - ${WEBAPP_STORAGE_HOME}/site:/data/db
+        #- ./data:/data/db
+        ports:
+            - "27017:27017"
+
+    findabeer.web:
+        image: ${DOCKER_REGISTRY-}findabeerweb
+        build:
+            context: .
+            dockerfile: FindaBeer.Web/Dockerfile
+        depends_on:
+            - mongo

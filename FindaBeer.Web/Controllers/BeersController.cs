@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
+﻿using FindaBeer.Services.Services.Beers;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace FindaBeer.Api.Controllers
 {
@@ -11,39 +9,79 @@ namespace FindaBeer.Api.Controllers
     [ApiController]
     public class BeersController : ControllerBase
     {
+        private readonly BeersService service;
+
+        public BeersController(BeersService service)
+        {
+            this.service = service;
+        }
+
         /// <summary>
         /// Retorna uma lista de cervejas.
         /// </summary>
         [HttpGet]
-        public IEnumerable<BeerDTO> Get()
+        public async Task<ActionResult<List<Beer>>> Get()
         {
-            var list = new List<BeerDTO>()
-            {
-                new BeerDTO()
-                {
-                    Id = 1,
-                    Name = "Antartica"
-                },
-                new BeerDTO()
-                {
-                    Id = 2,
-                    Name = "Skol"
-                },
-                new BeerDTO()
-                {
-                    Id = 3,
-                    Name = "Colorado"
-                },
-            };
-
-            return list;
+            return await service.Get();
         }
-    }
 
-    public class BeerDTO
-    {
-        public int Id { get; set; }
+        /// <summary>
+        /// Retorna uma cerveja.
+        /// </summary>
+        [HttpGet("{id}", Name = "Get")]
+        public async Task<ActionResult<Beer>> Get(string id)
+        {
+            var s = await service.Get(id);
+            if (s == null)
+            {
+                return NotFound();
+            }
 
-        public string Name { get; set; }
+            return s;
+        }
+
+        /// <summary>
+        /// Adiciona uma cerveja.
+        /// </summary>
+        [HttpPost]
+        public async Task<ActionResult<Beer>> Create([FromBody] Beer s)
+        {
+            await service.Create(s);
+            return CreatedAtRoute("Get", new { id = s.Id.ToString() }, s);
+
+        }
+
+        /// <summary>
+        /// Edita uma cerveja.
+        /// </summary>
+        [HttpPut("{id}")]
+        public async Task<ActionResult<Beer>> Put(string id, [FromBody] Beer su)
+        {
+            var s = await service.Get(id);
+            if (s == null)
+            {
+                return NotFound();
+            }
+            su.Id = s.Id;
+
+            await service.Update(id, su);
+            return CreatedAtRoute("Get", new { id = su.Id.ToString() }, su);
+        }
+
+        /// <summary>
+        /// Remove uma cerveja.
+        /// </summary>
+        [HttpDelete("{id}")]
+        public async Task<ActionResult<Beer>> Delete(string id)
+        {
+            if (await service.Remove(id))
+            {
+                return Ok();
+            }
+            else
+            {
+                return NotFound();
+            }
+        }
     }
 }
