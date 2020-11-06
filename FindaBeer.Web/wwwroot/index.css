@@ -1,0 +1,33 @@
+﻿html {
+    
+}
+
+body {
+    background-color: #ffc72c;
+}
+
+html, body {
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+}
+
+.content {
+    margin: auto;
+    width: 100%;
+    min-height: 100%;
+    max-width: 800px;
+    border-top-style: none;
+    background-color: white;
+}
+
+.header {
+    background-image: url(assets/header.jpg);
+    height: 350px;
+}
+
+.card {
+    width: 250px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    text-align: center;
+}

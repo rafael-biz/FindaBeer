@@ -48,7 +48,6 @@ namespace FindaBeer.Api.Controllers
         {
             await service.Create(s);
             return CreatedAtRoute("Get", new { id = s.Id.ToString() }, s);
-
         }
 
         /// <summary>

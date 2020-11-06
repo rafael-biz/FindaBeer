@@ -1,12 +1,56 @@
 ﻿<!DOCTYPE html>
-<html>
+<html ng-app="FindaBeer">
 <head>
     <meta charset="utf-8" />
     <title></title>
+    <link rel="stylesheet" href="libs/bootstrap/css/bootstrap.css" />
+    <link rel="stylesheet" href="index.css" />
+    <script src="libs/angular/angular.min.js"></script>
+    <script src="index.js"></script>
 </head>
-<body>
-    HELLO WORLD!!!
+<body ng-controller="FindaBeerController">
+    <div class="content">
+        <div class="header"></div>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1>
+                        Procurando uma cerveja?
+                    </h1>
+                    <p>Encontre uma cerveja ideal para o seu paladar aqui.</p>
+                </div>
+            </div>
 
-    2222
+
+            <div class="row">
+                <form>
+                    <div class="col-md-4 form-group">
+                        <label for="exampleInputEmail1">Email address</label>
+                        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
+                    </div>
+                    <div class="col-md-4 form-group">
+                        <label for="exampleInputPassword1">Password</label>
+                        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                    </div>
+                    <div class="col-md-4 form-group">
+                        <label for="exampleInputFile">File input</label>
+                        <input type="file" id="exampleInputFile" />
+                    </div>
+                    <button type="submit" class="btn btn-default">Submit</button>
+                </form>
+            </div>
+            <div class="row">
+                <div class="col-md-4" ng-repeat="beer in beers">
+                    <div class="card">{{ beer.name }}</div>
+                </div>
+                <div ng-if="beers == null" class="text-center">
+                    Carregando...
+                </div>
+                <div ng-if="beers.length == 0" class="text-center">
+                    Nenhuma cerveja encontrada =(
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
