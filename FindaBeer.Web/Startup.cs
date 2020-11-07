@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using FindaBeer.Services.Images;
 using FindaBeer.Services.Services.Beers;
 using FindaBeer.Staging;
 using Microsoft.AspNetCore.Builder;
@@ -28,6 +29,8 @@ namespace FindaBeer.Web
             services.AddScoped<BeersService>();
 
             services.AddScoped<StagingService>();
+
+            services.AddScoped<ImagesService>();
 
             services.AddHostedService<StagingServiceInitializer>();
 

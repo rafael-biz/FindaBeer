@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using FindaBeer.Services.Images;
+using Microsoft.Extensions.Configuration;
 using MongoDB.Driver;
 using System;
 using System.Collections.Generic;
@@ -11,8 +12,12 @@ namespace FindaBeer.Services.Services.Beers
     {
         private readonly IMongoCollection<Beer> beers;
 
-        public BeersService(IConfiguration config)
+        private readonly ImagesService imagesService;
+
+        public BeersService(IConfiguration config, ImagesService imagesService)
         {
+            this.imagesService = imagesService;
+
             var client = new MongoClient(config.GetConnectionString("FindaBeerDB"));
             var database = client.GetDatabase("FindaBeerDB");
             beers = database.GetCollection<Beer>("Beers");
@@ -30,6 +35,22 @@ namespace FindaBeer.Services.Services.Beers
 
         public async Task<Beer> Create(Beer s)
         {
+            if (!string.IsNullOrEmpty(s.DefaultImage))
+            {
+                using (var image = imagesService.FromBase64(s.DefaultImage))
+                {
+                    using (var croped = imagesService.CropCenter(image, 300, 600))
+                    {
+                        s.LargeImage = imagesService.ToBase64(croped);
+                    }
+
+                    using (var croped = imagesService.CropCenter(image, 90, 180))
+                    {
+                        s.Thumbnail = imagesService.ToBase64(croped);
+                    }
+                }
+            }
+
             await beers.InsertOneAsync(s);
             return s;
         }

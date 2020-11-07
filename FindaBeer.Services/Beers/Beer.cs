@@ -38,5 +38,14 @@ namespace FindaBeer.Services.Services.Beers
 
         [BsonElement("TemperatureMax")]
         public int TemperatureMax { get; set; }
+
+        [BsonElement("DefaultImage")]
+        public string DefaultImage { get; set; }
+
+        [BsonElement("LargeImage")]
+        public string LargeImage { get; set; }
+
+        [BsonElement("Thumbnail")]
+        public string Thumbnail { get; set; }
     }
 }

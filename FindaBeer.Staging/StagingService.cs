@@ -1,4 +1,5 @@
-﻿using FindaBeer.Services.Services.Beers;
+﻿using FindaBeer.Services.Images;
+using FindaBeer.Services.Services.Beers;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using MongoDB.Driver;
@@ -17,12 +18,15 @@ namespace FindaBeer.Staging
     {
         private readonly BeersService beersService;
 
+        private readonly ImagesService imagesService;
+
         private readonly IConfiguration config;
 
-        public StagingService(IConfiguration config, BeersService beersService)
+        public StagingService(IConfiguration config, BeersService beersService, ImagesService imagesService)
         {
             this.beersService = beersService;
             this.config = config;
+            this.imagesService = imagesService;
         }
 
         /// <summary>
@@ -42,7 +46,8 @@ namespace FindaBeer.Staging
                 AlcoholContent = 0.047f,
                 TemperatureMin = 0,
                 TemperatureMax = 4,
-                Color = 10
+                Color = 10,
+                DefaultImage = imagesService.ToBase64(global::FindaBeer.Staging.Properties.Resources.antarctica)
             });
 
             await beersService.Create(new Beer()
@@ -54,7 +59,8 @@ namespace FindaBeer.Staging
                 AlcoholContent = 0.054f,
                 TemperatureMin = 0,
                 TemperatureMax = 4,
-                Color = 10
+                Color = 10,
+                DefaultImage = imagesService.ToBase64(global::FindaBeer.Staging.Properties.Resources.antarctica_cristal)
             });
 
             await beersService.Create(new Beer()
@@ -66,7 +72,8 @@ namespace FindaBeer.Staging
                 AlcoholContent = 0.045f,
                 TemperatureMin = 0,
                 TemperatureMax = 4,
-                Color = 10
+                Color = 10,
+                DefaultImage = imagesService.ToBase64(global::FindaBeer.Staging.Properties.Resources.antarctica_subzero)
             });
 
             await beersService.Create(new Beer()
@@ -78,7 +85,8 @@ namespace FindaBeer.Staging
                 AlcoholContent = 0.048f,
                 TemperatureMin = 0,
                 TemperatureMax = 4,
-                Color = 10
+                Color = 10,
+                DefaultImage = imagesService.ToBase64(global::FindaBeer.Staging.Properties.Resources.brahma)
             });
 
             await beersService.Create(new Beer()
@@ -90,7 +98,8 @@ namespace FindaBeer.Staging
                 AlcoholContent = 0.049f,
                 TemperatureMin = 4,
                 TemperatureMax = 8,
-                Color = 20
+                Color = 20,
+                DefaultImage = imagesService.ToBase64(global::FindaBeer.Staging.Properties.Resources.brahma_extra_weiss)
             });
 
             await beersService.Create(new Beer()
@@ -102,7 +111,8 @@ namespace FindaBeer.Staging
                 AlcoholContent = 0.038f,
                 TemperatureMin = 8,
                 TemperatureMax = 12,
-                Color = 90
+                Color = 90,
+                DefaultImage = imagesService.ToBase64(global::FindaBeer.Staging.Properties.Resources.brahma_malzbier)
             });
 
             await beersService.Create(new Beer()
@@ -114,7 +124,8 @@ namespace FindaBeer.Staging
                 AlcoholContent = 0.055f,
                 TemperatureMin = 4,
                 TemperatureMax = 8,
-                Color = 10
+                Color = 10,
+                DefaultImage = imagesService.ToBase64(global::FindaBeer.Staging.Properties.Resources.appia)
             });
 
             await beersService.Create(new Beer()
@@ -126,7 +137,8 @@ namespace FindaBeer.Staging
                 AlcoholContent = 0.08f,
                 TemperatureMin = 8,
                 TemperatureMax = 16,
-                Color = 70
+                Color = 70,
+                DefaultImage = imagesService.ToBase64(global::FindaBeer.Staging.Properties.Resources.colorado_bertho)
             });
 
             await beersService.Create(new Beer()
@@ -138,7 +150,8 @@ namespace FindaBeer.Staging
                 AlcoholContent = 0.045f,
                 TemperatureMin = 0,
                 TemperatureMax = 4,
-                Color = 10
+                Color = 10,
+                DefaultImage = imagesService.ToBase64(global::FindaBeer.Staging.Properties.Resources.colorado_eugenia)
             });
 
             await beersService.Create(new Beer()
@@ -150,7 +163,8 @@ namespace FindaBeer.Staging
                 AlcoholContent = 0.07f,
                 TemperatureMin = 8,
                 TemperatureMax = 12,
-                Color = 30
+                Color = 30,
+                DefaultImage = imagesService.ToBase64(global::FindaBeer.Staging.Properties.Resources.indica)
             });
         }
     }
