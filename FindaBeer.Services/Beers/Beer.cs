@@ -28,9 +28,15 @@ namespace FindaBeer.Services.Services.Beers
         public float AlcoholContent { get; set; }
 
         [BsonElement("Pairings")]
-        public List<string> Pairings { get; set; }
+        public string Pairings { get; set; }
 
         [BsonElement("Ingredients")]
         public List<string> Ingredients { get; set; }
+
+        [BsonElement("TemperatureMin")]
+        public int TemperatureMin { get; set; }
+
+        [BsonElement("TemperatureMax")]
+        public int TemperatureMax { get; set; }
     }
 }

@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FindaBeer.Web", "FindaBeer.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FindaBeer.Services", "FindaBeer.Services\FindaBeer.Services.csproj", "{4D5E0B30-A053-40CD-A300-0979ED8D9B57}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FindaBeer.Staging", "FindaBeer.Staging\FindaBeer.Staging.csproj", "{51F0F1BA-42EE-497E-A685-E078C570B292}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{4D5E0B30-A053-40CD-A300-0979ED8D9B57}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4D5E0B30-A053-40CD-A300-0979ED8D9B57}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4D5E0B30-A053-40CD-A300-0979ED8D9B57}.Release|Any CPU.Build.0 = Release|Any CPU
+		{51F0F1BA-42EE-497E-A685-E078C570B292}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{51F0F1BA-42EE-497E-A685-E078C570B292}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{51F0F1BA-42EE-497E-A685-E078C570B292}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{51F0F1BA-42EE-497E-A685-E078C570B292}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

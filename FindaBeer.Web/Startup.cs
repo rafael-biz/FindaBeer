@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using FindaBeer.Services.Services.Beers;
+using FindaBeer.Staging;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -25,6 +26,10 @@ namespace FindaBeer.Web
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddScoped<BeersService>();
+
+            services.AddScoped<StagingService>();
+
+            services.AddHostedService<StagingServiceInitializer>();
 
             services.AddControllersWithViews();
 
