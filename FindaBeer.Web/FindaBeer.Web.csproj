@@ -20,8 +20,4 @@
     <ProjectReference Include="..\FindaBeer.Services\FindaBeer.Services.csproj" />
     <ProjectReference Include="..\FindaBeer.Staging\FindaBeer.Staging.csproj" />
   </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="wwwroot\app\" />
-  </ItemGroup>
 </Project>

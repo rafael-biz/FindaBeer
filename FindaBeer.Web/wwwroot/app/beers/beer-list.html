@@ -1,0 +1,39 @@
+﻿<div class="row">
+    <div class="col-md-12">
+        <h1>
+            Procurando uma cerveja?
+        </h1>
+        <p>Encontre uma cerveja ideal para o seu paladar aqui.</p>
+    </div>
+</div>
+
+<div class="row">
+    <form>
+        <div class="col-md-4 form-group">
+            <label>Nome</label>
+            <input type="text" class="form-control">
+        </div>
+        <div class="col-md-4 form-group">
+
+        </div>
+        <div class="col-md-4 form-group">
+            <button type="submit" class="btn btn-default">Submit</button>
+        </div>
+    </form>
+</div>
+<div class="row">
+    <div class="col-md-3" ng-repeat="beer in beers">
+        <a href="#!beers/{{ beer.id }}" class="thumbnail card">
+            <img ng-src="{{ 'data:image/png;base64,' + beer.thumbnail }}">
+            <div class="caption">
+                <h3>{{ beer.name }}</h3>
+            </div>
+        </a>
+    </div>
+    <div ng-if="beers == null" class="text-center">
+        Carregando...
+    </div>
+    <div ng-if="beers.length == 0" class="text-center">
+        Nenhuma cerveja encontrada =(
+    </div>
+</div>

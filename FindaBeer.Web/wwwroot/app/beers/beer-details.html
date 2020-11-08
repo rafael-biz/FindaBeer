@@ -1,0 +1,26 @@
+﻿<h1>{{ beer.name }}</h1>
+<div class="col-md-4">
+    <p>{{ beer.description }}</p>
+</div>
+<div class="col-md-4">
+    <div class="thumbnail">
+        <img ng-src="{{ 'data:image/png;base64,' + beer.largeImage }}">
+    </div>
+</div>
+<div class="col-md-4">
+    <h3>Harmonização</h3>
+    <p>{{ beer.pairings }}</p>
+
+    <h3>Cor</h3>
+    <p>{{ beer.color }}</p>
+
+    <h3>Temperatura</h3>
+    <p>{{ beer.temperatureMin }}-{{ beer.temperatureMax }} ºC</p>
+
+    <h3>Teor alcoólico</h3>
+    <p>{{ beer.alcoholContent }}% vol</p>
+
+    <h3>Ingredientes</h3>
+    <p>{{ beer.ingredients }}% vol</p>
+</div>
+<p><a href="#/">Voltar</a></p>

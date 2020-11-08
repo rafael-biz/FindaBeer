@@ -1,15 +1,17 @@
-﻿var module = angular.module('FindaBeer', []);
+﻿var module = angular.module('FindaBeer', ["ngRoute"]);
 
-module.controller('FindaBeerController', function FindaBeerController($scope, $http) {
-    $scope.test = "Hello World 2!";
-    $scope.beers = null;
-
-    $http({
-        method: 'GET',
-        url: '/api/beers'
-    }).then(
-        function(response) {
-            $scope.beers = response.data;
-        }
-    );
+module.config(function($routeProvider) {
+    $routeProvider
+        .when("/", {
+            templateUrl: "app/beers/beer-list.html",
+            controller: "FindaBeerListController"
+        })
+        .when("/beers/add", {
+            templateUrl: "app/beers/beer-add.html",
+            controller: "FindaBeerAddController"
+        })
+        .when("/beers/:id", {
+            templateUrl: "app/beers/beer-details.html",
+            controller: "FindaBeerDetailsController"
+        });
 });

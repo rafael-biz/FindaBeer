@@ -21,9 +21,6 @@ namespace FindaBeer.Services.Services.Beers
         [BsonElement("Color")]
         public float Color { get; set; }
 
-        [BsonElement("Temperature")]
-        public float Temperature { get; set; }
-
         [BsonElement("AlcoholContent")]
         public float AlcoholContent { get; set; }
 
