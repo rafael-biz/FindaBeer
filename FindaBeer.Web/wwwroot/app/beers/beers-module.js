@@ -1,7 +1,10 @@
 ﻿var module = angular.module('FindaBeer');
 
-module.controller('FindaBeerListController', function FindaBeerController($scope, $http) {
+module.controller('FindaBeerListController', function FindaBeerController($scope, $http, Ingredients) {
     $scope.beers = null;
+    $scope.filter = {};
+
+    $scope.ingredients = Ingredients();
 
     $http({
         method: 'GET',
@@ -11,6 +14,35 @@ module.controller('FindaBeerListController', function FindaBeerController($scope
             $scope.beers = response.data;
         }
     );
+
+    $scope.clearClick = function() {
+        $scope.filter = {};
+        $scope.ingredients = Ingredients();
+        $scope.searchClick();
+    };
+
+    $scope.searchClick = function() {
+        var ingredients = [];
+        for (var i = 0; i < $scope.ingredients.length; i++) {
+            var ingredient = $scope.ingredients[i];
+            if (ingredient.selected) {
+                ingredients.push(ingredient.name);
+            }
+        }
+
+        $scope.filter.ingredients = ingredients;
+        $scope.beers = null;
+
+        $http({
+            method: 'POST',
+            url: '/api/beers/filter',
+            data: $scope.filter
+        }).then(
+            function(response) {
+                $scope.beers = response.data;
+            }
+        );
+    };
 });
 
 module.controller('FindaBeerDetailsController', function FindaBeerDetailsController($scope, $http, $routeParams) {
@@ -45,7 +77,7 @@ module.controller('FindaBeerDetailsController', function FindaBeerDetailsControl
 
 module.controller('FindaBeerEditController', function FindaBeerEditController($scope, $http, $routeParams, Ingredients) {
     $scope.id = $routeParams.id;
-    $scope.ingredients = Ingredients;
+    $scope.ingredients = Ingredients();
 
     if ($scope.id) {
         $http({
@@ -95,20 +127,22 @@ module.controller('FindaBeerEditController', function FindaBeerEditController($s
     };
 });
 
-module.constant("Ingredients", [
-    { name: "água" },
-    { name: "açúcar de cana" },
-    { name: "açúcar mascavo" },
-    { name: "aveia" },
-    { name: "castanha do pará" },
-    { name: "corante caramelo III INS 150c" },
-    { name: "fermento" },
-    { name: "lúpulo" },
-    { name: "polpa de uvaia" },
-    { name: "malte" },
-    { name: "malte de trigo" },
-    { name: "malte de cevada" },
-    { name: "mel" },
-    { name: "milho" },
-    { name: "rapadura" }
-]);
+module.constant("Ingredients", function() {
+    return [
+        { name: "água" },
+        { name: "açúcar de cana" },
+        { name: "açúcar mascavo" },
+        { name: "aveia" },
+        { name: "castanha do pará" },
+        { name: "corante caramelo" },
+        { name: "fermento" },
+        { name: "lúpulo" },
+        { name: "polpa de uvaia" },
+        { name: "malte" },
+        { name: "malte de trigo" },
+        { name: "malte de cevada" },
+        { name: "mel" },
+        { name: "milho" },
+        { name: "rapadura" }
+    ];
+});

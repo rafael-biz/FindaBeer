@@ -1,12 +1,8 @@
 ﻿using FindaBeer.Services.Images;
-using FindaBeer.Services.Services.Beers;
+using FindaBeer.Services.Beers;
 using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Hosting;
 using MongoDB.Driver;
-using System;
 using System.Collections.Generic;
-using System.Text;
-using System.Threading;
 using System.Threading.Tasks;
 
 namespace FindaBeer.Staging
@@ -106,7 +102,7 @@ namespace FindaBeer.Staging
             {
                 Name = "Brahma Malzbier",
                 Description = "A Brahma Malzbier é para quem ama equilíbrio: é leve, mas encorpada. A Brahma Malzbier é também para quem gosta de um sabor adocicado no paladar, que aqui é por conta do caramelo na composição. E, por fim, a Brahma Malzbier é ótima para quem quer harmonizar cerveja com sobremesas, como chocolates e tortas.",
-                Ingredients = new List<string>() { "água", "malte", "milho", "açúcar de cana", "lúpulo", "corante caramelo III INS 150c" },
+                Ingredients = new List<string>() { "água", "malte", "milho", "açúcar de cana", "lúpulo", "corante caramelo" },
                 Pairings = "As notas de malte torrados deixam essa cerveja excelente para harmonizar com sobremesas, como torta de chocolate e sorvete de creme.",
                 AlcoholContent = 0.038f,
                 TemperatureMin = 8,

@@ -15,32 +15,50 @@
 </div>
 
 <div class="row">
-    <form>
-        <div class="col-md-4 form-group">
-            <label>Nome</label>
-            <input type="text" class="form-control">
-        </div>
-        <div class="col-md-4 form-group">
-
-        </div>
-        <div class="col-md-4 form-group">
-            <button type="submit" class="btn btn-default">Submit</button>
-        </div>
-    </form>
-</div>
-<div class="row">
-    <div class="col-md-3" ng-repeat="beer in beers">
-        <a href="#!beers/{{ beer.id }}" class="thumbnail card">
-            <img ng-src="{{ 'data:image/png;base64,' + beer.thumbnail }}">
-            <div class="caption">
-                <h3>{{ beer.name }}</h3>
+    <div class="col-md-3">
+        <form ng-submit="searchClick()">
+            <div class="form-group">
+                <label>Nome</label>
+                <input type="text" class="form-control" ng-model="filter.name">
             </div>
-        </a>
+            <div class="form-group">
+                <label>Teor alcoólico</label>
+                <input type="number" class="form-control" step="0.01" max="1" min="0" ng-model="filter.alcoholContent" />
+            </div>
+            <div class="form-group">
+                <label>Temperatura</label>
+                <input type="number" class="form-control" max="100" min="-10" ng-model="filter.temperature" />
+            </div>
+            <div class="form-group">
+                <label>Cor</label>
+                <input type="number" class="form-control" max="100" min="0" ng-model="filter.color" />
+            </div>
+            <div class="form-group">
+                <p><label>Ingredientes</label></p>
+                <span ng-repeat="ingredient in ingredients"><label><input type="checkbox" ng-model="ingredient.selected"> {{ ingredient.name }}</label><br /></span>
+            </div>
+            <div class="form-group">
+                <button type="button" ng-click="clearClick()" class="btn btn-default">Limpar</button>
+                <button type="submit" class="btn btn-default">Pesquisar</button>
+            </div>
+        </form>
     </div>
-    <div ng-if="beers == null" class="text-center">
-        Carregando...
-    </div>
-    <div ng-if="beers.length == 0" class="text-center">
-        Nenhuma cerveja encontrada =(
+    <div class="col-md-9">
+        <div class="row">
+            <div class="col-md-4" ng-repeat="beer in beers">
+                <a href="#!beers/{{ beer.id }}" class="thumbnail card">
+                    <img ng-src="{{ 'data:image/png;base64,' + beer.thumbnail }}">
+                    <div class="caption">
+                        <h3>{{ beer.name }}</h3>
+                    </div>
+                </a>
+            </div>
+            <div ng-if="beers == null" class="text-center col-md-12">
+                <h3>Carregando...</h3>
+            </div>
+            <div ng-if="beers.length == 0" class="text-center col-md-12">
+                <h3>Nenhuma cerveja encontrada =(</h3>
+            </div>
+        </div>
     </div>
 </div>

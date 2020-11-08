@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace FindaBeer.Services.Services.Beers
+namespace FindaBeer.Services.Beers
 {
     public sealed class Beer
     {

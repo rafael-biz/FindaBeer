@@ -1,10 +1,7 @@
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
 using FindaBeer.Services.Images;
-using FindaBeer.Services.Services.Beers;
+using FindaBeer.Services.Beers;
 using FindaBeer.Staging;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;

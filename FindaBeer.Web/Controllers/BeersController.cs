@@ -1,4 +1,4 @@
-﻿using FindaBeer.Services.Services.Beers;
+﻿using FindaBeer.Services.Beers;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -22,7 +22,16 @@ namespace FindaBeer.Api.Controllers
         [HttpGet]
         public async Task<ActionResult<List<Beer>>> Get()
         {
-            return await service.Get();
+            return await service.GetList(null);
+        }
+
+        /// <summary>
+        /// Retorna uma lista de cervejas de acordo com as opções do filtro.
+        /// </summary>
+        [HttpPost("filter")]
+        public async Task<ActionResult<List<Beer>>> Get(BeersFilterDTO filter)
+        {
+            return await service.GetList(filter);
         }
 
         /// <summary>
