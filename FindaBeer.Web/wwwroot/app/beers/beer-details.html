@@ -42,6 +42,6 @@
         <p>{{ beer.alcoholContent * 100 }}% vol</p>
 
         <h4>Ingredientes</h4>
-        <p>{{ beer.ingredients }}</p>
+        <p>{{ beer.ingredients.join(', ') }}</p>
     </div>
 </div>

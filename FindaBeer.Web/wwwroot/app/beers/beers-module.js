@@ -43,6 +43,10 @@ module.controller('FindaBeerListController', function FindaBeerController($scope
             }
         );
     };
+
+    $scope.addClick = function() {
+        window.location.href = "#!beers/add";
+    };
 });
 
 module.controller('FindaBeerDetailsController', function FindaBeerDetailsController($scope, $http, $routeParams) {
@@ -120,8 +124,8 @@ module.controller('FindaBeerEditController', function FindaBeerEditController($s
             data: $scope.beer,
             url: $scope.id ? ('/api/beers/' + $scope.id) : ('/api/beers')
         }).then(
-            function() {
-                window.location.href = "#!beers/" + $scope.id;
+            function(response) {
+                window.location.href = "#!beers/" + response.data.id;
             }
         );
     };
