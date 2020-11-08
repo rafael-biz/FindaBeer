@@ -35,6 +35,22 @@ namespace FindaBeer.Services.Services.Beers
 
         public async Task<Beer> Create(Beer s)
         {
+            ResizeImage(s);
+
+            await beers.InsertOneAsync(s);
+            return s;
+        }
+
+        public async Task<Beer> Update(string id, Beer s)
+        {
+            ResizeImage(s);
+
+            await beers.ReplaceOneAsync(su => su.Id == id, s);
+            return s;
+        }
+
+        private void ResizeImage(Beer s)
+        {
             if (!string.IsNullOrEmpty(s.DefaultImage))
             {
                 using (var image = imagesService.FromBase64(s.DefaultImage))
@@ -50,17 +66,7 @@ namespace FindaBeer.Services.Services.Beers
                     }
                 }
             }
-
-            await beers.InsertOneAsync(s);
-            return s;
         }
-
-        public async Task<Beer> Update(string id, Beer s)
-        {
-            await beers.ReplaceOneAsync(su => su.Id == id, s);
-            return s;
-        }
-
 
         public async Task<bool> Remove(string id)
         {

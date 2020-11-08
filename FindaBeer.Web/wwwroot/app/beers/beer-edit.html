@@ -1,0 +1,59 @@
+﻿<div class="row">
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">Cervejas</a>
+            </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li><a href="#!beers/{{ beer.id }}">{{ :: beer.name }} <span class="sr-only">(current)</span></a></li>
+                    <li class="active"><a>Editar <span class="sr-only">(current)</span></a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</div>
+<div class="row">
+    <div class="col-md-8">
+        <form ng-submit="saveClick()">
+            <div class="form-group">
+                <label>Nome</label>
+                <input type="text" class="form-control" required ng-model="beer.name" />
+            </div>
+            <div class="form-group">
+                <label>Descrição</label>
+                <textarea type="text" class="form-control" rows="5" required ng-model="beer.description"></textarea>
+            </div>
+            <div class="form-group">
+                <label>Harmonização</label>
+                <textarea type="text" class="form-control" rows="5" required ng-model="beer.pairings"></textarea>
+            </div>
+            <div class="form-group">
+                <label>Imagem</label>
+                <input type="file" ng-model="file" base-sixty-four-input>
+            </div>
+            <div class="form-group">
+                <label>Teor alcoólico</label>
+                <input type="number" class="form-control" step="0.001" max="1" min="0" required ng-model="beer.alcoholContent" />
+            </div>
+            <div class="form-group">
+                <label>Temperatura mínima</label>
+                <input type="number" class="form-control" max="100" min="-10" required ng-model="beer.temperatureMin" />
+            </div>
+            <div class="form-group">
+                <label>Temperatura máxima</label>
+                <input type="number" class="form-control" max="100" min="-10" required ng-model="beer.temperatureMax" />
+            </div>
+            <div class="form-group">
+                <label>Cor</label>
+                <input type="number" class="form-control" ng-model="beer.color" max="100" min="0" />
+            </div>
+            <div class="form-group">
+                <p><label>Ingredientes</label></p>
+                <span ng-repeat="ingredient in ingredients"><label><input type="checkbox" ng-model="ingredient.selected"> {{ ingredient.name }}</label><br /></span>
+            </div>
+            <button type="submit" class="btn btn-default">Salvar</button>
+        </form>
+    </div>
+</div>
+<br /><br />
