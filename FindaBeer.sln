@@ -11,6 +11,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FindaBeer.Services", "Finda
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FindaBeer.Staging", "FindaBeer.Staging\FindaBeer.Staging.csproj", "{51F0F1BA-42EE-497E-A685-E078C570B292}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{4CEEA5C7-F274-434A-AFC3-ABC4F6FAABC0}"
+	ProjectSection(SolutionItems) = preProject
+		README.MD = README.MD
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

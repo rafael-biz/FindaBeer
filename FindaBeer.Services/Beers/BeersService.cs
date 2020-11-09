@@ -12,7 +12,7 @@ namespace FindaBeer.Services.Beers
 {
     public sealed class BeersService
     {
-        private readonly IMongoCollection<Beer> beers;
+        private readonly IMongoCollection<BeerDTO> beers;
 
         private readonly ImagesService imagesService;
 
@@ -22,10 +22,10 @@ namespace FindaBeer.Services.Beers
 
             var client = new MongoClient(config.GetConnectionString("FindaBeerDB"));
             var database = client.GetDatabase("FindaBeerDB");
-            beers = database.GetCollection<Beer>("Beers");
+            beers = database.GetCollection<BeerDTO>("Beers");
         }
 
-        public async Task<List<Beer>> GetList(BeersFilterDTO filterDTO)
+        public async Task<List<BeerDTO>> GetList(BeersFilterDTO filterDTO)
         {
             if (filterDTO == null)
             {
@@ -33,7 +33,7 @@ namespace FindaBeer.Services.Beers
             }
             else
             {
-                var builder = Builders<Beer>.Filter;
+                var builder = Builders<BeerDTO>.Filter;
 
                 var filter = builder.Empty;
 
@@ -65,12 +65,12 @@ namespace FindaBeer.Services.Beers
             }
         }
 
-        public async Task<Beer> Get(string id)
+        public async Task<BeerDTO> Get(string id)
         {
             return await beers.Find(s => s.Id == id).FirstOrDefaultAsync();
         }
 
-        public async Task<Beer> Create(Beer s)
+        public async Task<BeerDTO> Create(BeerDTO s)
         {
             ResizeImage(s);
 
@@ -78,7 +78,7 @@ namespace FindaBeer.Services.Beers
             return s;
         }
 
-        public async Task<Beer> Update(string id, Beer s)
+        public async Task<BeerDTO> Update(string id, BeerDTO s)
         {
             ResizeImage(s);
 
@@ -86,7 +86,7 @@ namespace FindaBeer.Services.Beers
             return s;
         }
 
-        private void ResizeImage(Beer s)
+        private void ResizeImage(BeerDTO s)
         {
             if (!string.IsNullOrEmpty(s.DefaultImage))
             {

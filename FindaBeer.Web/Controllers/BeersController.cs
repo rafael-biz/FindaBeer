@@ -20,7 +20,7 @@ namespace FindaBeer.Api.Controllers
         /// Retorna uma lista de cervejas.
         /// </summary>
         [HttpGet]
-        public async Task<ActionResult<List<Beer>>> Get()
+        public async Task<ActionResult<List<BeerDTO>>> Get()
         {
             return await service.GetList(null);
         }
@@ -29,7 +29,7 @@ namespace FindaBeer.Api.Controllers
         /// Retorna uma lista de cervejas de acordo com as opções do filtro.
         /// </summary>
         [HttpPost("filter")]
-        public async Task<ActionResult<List<Beer>>> Get(BeersFilterDTO filter)
+        public async Task<ActionResult<List<BeerDTO>>> Get(BeersFilterDTO filter)
         {
             return await service.GetList(filter);
         }
@@ -38,7 +38,7 @@ namespace FindaBeer.Api.Controllers
         /// Retorna uma cerveja.
         /// </summary>
         [HttpGet("{id}", Name = "Get")]
-        public async Task<ActionResult<Beer>> Get(string id)
+        public async Task<ActionResult<BeerDTO>> Get(string id)
         {
             var s = await service.Get(id);
             if (s == null)
@@ -53,7 +53,7 @@ namespace FindaBeer.Api.Controllers
         /// Adiciona uma cerveja.
         /// </summary>
         [HttpPost]
-        public async Task<ActionResult<Beer>> Create([FromBody] Beer s)
+        public async Task<ActionResult<BeerDTO>> Create([FromBody] BeerDTO s)
         {
             await service.Create(s);
             return CreatedAtRoute("Get", new { id = s.Id.ToString() }, s);
@@ -63,7 +63,7 @@ namespace FindaBeer.Api.Controllers
         /// Edita uma cerveja.
         /// </summary>
         [HttpPut("{id}")]
-        public async Task<ActionResult<Beer>> Put(string id, [FromBody] Beer su)
+        public async Task<ActionResult<BeerDTO>> Put(string id, [FromBody] BeerDTO su)
         {
             var s = await service.Get(id);
             if (s == null)
@@ -80,7 +80,7 @@ namespace FindaBeer.Api.Controllers
         /// Remove uma cerveja.
         /// </summary>
         [HttpDelete("{id}")]
-        public async Task<ActionResult<Beer>> Delete(string id)
+        public async Task<ActionResult<BeerDTO>> Delete(string id)
         {
             if (await service.Remove(id))
             {
